@@ -2,7 +2,7 @@ package patterns;
 
 import utility.Input;
 
-public class StarPattern {
+public class Rectangle {
     public static void main(String[] args) {
         int r = Input.getInt("Enter rows - ");
         int c = Input.getInt("Enter cols - ");
