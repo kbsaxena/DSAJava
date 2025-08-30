@@ -1,7 +1,5 @@
 package basics;
 
-import utility.Input;
-
 public class HCF {
     public static void main(String[] args) {
         System.out.println("Hcf is - " + hcf(8,20));
