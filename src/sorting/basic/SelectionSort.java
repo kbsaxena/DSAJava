@@ -32,7 +32,6 @@ public class SelectionSort {
     }
 
     private static void selectionSortLargestFirst(int[] arr) {
-        //Find Smallest element in each pass and replace with leftmost element
         int n = arr.length;
         for(int i=0; i<n-1; i++){
             int max = Integer.MIN_VALUE;
