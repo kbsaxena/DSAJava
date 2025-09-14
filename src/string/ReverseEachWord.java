@@ -15,7 +15,7 @@ public class ReverseEachWord {
         while(j<sb.length()){
             if(sb.charAt(j) != ' ') j++;
             else {
-                reverse(sb, i, j-1);
+                reversePart(sb, i, j-1);
                 j++;
                 i = j;
             }
