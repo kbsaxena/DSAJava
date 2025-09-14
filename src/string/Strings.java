@@ -4,6 +4,7 @@ public class Strings {
     public static void main(String[] args) {
         String s = " A2b{Cc {B2a";
         System.out.println(isPalindrome(s));
+        System.out.println(s.substring(2,2));
     }
 
     private static boolean isPalindrome(String s) {
