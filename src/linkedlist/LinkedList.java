@@ -1,16 +1,5 @@
 package linkedlist;
 
-import org.w3c.dom.*;
-
-class Node {
-    int data;
-    Node next;
-
-    Node(int data){
-        this.data = data;
-    }
-}
-
 public class LinkedList {
     public static void print(Node head){
         Node temp = head;
@@ -34,6 +23,15 @@ public class LinkedList {
         printRec(head.next);
     }
 
+    //Using Recursion
+    public static void printinReverseOrder(Node head){
+        if(head == null){
+            return;
+        }
+        System.out.print(head.data + " ");
+        printRec(head.next);
+    }
+
     public static void main(String[] args) {
         Node a = new Node(10);
         Node b = new Node(20);
@@ -43,5 +41,18 @@ public class LinkedList {
         b.next = c;
 
         printRec(a);
+        printinReverseOrder(a);
+        System.out.println(length(a));
+    }
+
+    private static int length(Node head) { // O(n) Time
+        int len = 0;
+        Node temp = head;
+        while(temp!= null) {
+            len++;
+            temp = temp.next;
+        }
+
+        return len;
     }
 }
