@@ -15,6 +15,7 @@ public class RotateLeftLL {
 
         if(k==0) return head;
 
+        //Just add this one line - Rest Same logic as RotateRight
         k = n-k;
 
         Node fast = head, slow=head;
