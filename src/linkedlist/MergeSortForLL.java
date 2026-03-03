@@ -3,6 +3,7 @@ package linkedlist;
 public class MergeSortForLL {
     public Node mergeSort(Node head) {
         if(head == null || head.next == null) return head;
+        //Break Into 2 list
         Node slow= head, fast = head;
         while(fast.next!= null && fast.next.next != null){
             fast = fast.next.next;
