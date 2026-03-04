@@ -14,19 +14,7 @@ public class ReOrderList {
 
         head2 = reverseList(head2);
 
-        Node i = head;
-        Node j = head2;
-
-        while(j!=null){
-            Node t1 = i.next;
-            Node t2 = j.next;
-
-            i.next = j;
-            j.next = t1;
-
-            i = t1;
-            j = t2;
-        }
+        head = merge(head, head2);
     }
 
     Node reverseList(Node head) {
@@ -41,5 +29,27 @@ public class ReOrderList {
             current = next;
         }
         return prev;
+    }
+
+    Node merge(Node head1, Node head2) { //TC - O(m+n)
+        // code here
+        Node dummy = new Node(-1);
+
+        Node i = head1, j = head2, k = dummy;
+        while(i!=null && j!=null){
+            if(i.data<j.data){
+                k.next = i;
+                i = i.next;
+            } else {
+                k.next = j;
+                j = j.next;
+            }
+            k = k.next;
+        }
+
+        if(i == null) k.next = j;
+        else k.next = i;
+
+        return dummy.next;
     }
 }
