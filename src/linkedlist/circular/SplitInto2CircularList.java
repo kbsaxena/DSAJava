@@ -1,6 +1,6 @@
 package linkedlist.circular;
 
-/* Given pai Class */
+/* Given pair Class */
 class Pair<T, U> {
     T first;
     U second;
