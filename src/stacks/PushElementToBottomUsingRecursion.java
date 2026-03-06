@@ -10,6 +10,15 @@ public class PushElementToBottomUsingRecursion {
         print(st);
         pushAtBottom(-10, st);
         print(st);
+        reverse(st);
+        print(st);
+    }
+
+    private static void reverse(Stack<Integer> st) {
+        if(st.size() == 1) return;
+        int top = st.pop();
+        reverse(st);
+        pushAtBottom(top, st);
     }
 
     private static void pushAtBottom(int ele, Stack<Integer> st) {
