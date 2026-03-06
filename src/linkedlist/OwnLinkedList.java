@@ -3,6 +3,8 @@ package linkedlist;
 class Node {
     int data;
     Node next;
+    //Added a random Node for a question used in CloneLLWithNextAndRandom
+    Node random;
 
     Node(int data){
         this.data = data;
