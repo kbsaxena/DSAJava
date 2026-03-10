@@ -6,9 +6,9 @@ class Node{
 }
 
 class MyQueue{
-    Node head;
-    Node tail;
-    int size;
+    private Node head;
+    private Node tail;
+    private int size;
 
     void add(int ele){
         Node n = new Node(ele);
