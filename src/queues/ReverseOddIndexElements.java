@@ -19,10 +19,10 @@ public class ReverseOddIndexElements {
         int n = q.size();
 
         // Step 1: Push odd index elements into stack
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             int val = q.remove();
 
-            if (i % 2 != 0) {
+            if (i % 2 != 0) {   // odd index
                 st.push(val);
             }
 
@@ -30,7 +30,7 @@ public class ReverseOddIndexElements {
         }
 
         // Step 2: Replace odd index elements using stack
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             int val = q.remove();
 
             if (i % 2 != 0) {
