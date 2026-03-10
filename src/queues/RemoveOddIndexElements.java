@@ -10,6 +10,7 @@ public class RemoveOddIndexElements {
 
         removeOddIndex(q);
     }
+
     private static void removeOddIndex(Queue<Integer> q) {
         int n = q.size();
 
