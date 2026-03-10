@@ -9,18 +9,18 @@ public class ReverseFirstKElements {
         Stack<Integer> st = new Stack<>();
         int n = q.size();
 
-        // Step 1: Push first k elements into stack
-        for (int i = 0; i < k; i++) {
+        // push first k elements (index 1..k)
+        for (int i = 1; i <= k; i++) {
             st.push(q.remove());
         }
 
-        // Step 2: Add back to queue (reversed)
+        // add back reversed
         while (!st.isEmpty()) {
             q.add(st.pop());
         }
 
-        // Step 3: Move remaining elements to maintain order
-        for (int i = 0; i < n - k; i++) {
+        // rotate remaining elements
+        for (int i = 1; i <= n - k; i++) {
             q.add(q.remove());
         }
 
