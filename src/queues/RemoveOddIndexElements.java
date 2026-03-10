@@ -12,9 +12,10 @@ public class RemoveOddIndexElements {
     }
 
     private static void removeOddIndex(Queue<Integer> q) {
+
         int n = q.size();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             int val = q.remove();
 
             // keep only even index elements
