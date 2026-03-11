@@ -27,6 +27,8 @@ public class BinaryTreeNode {
         System.out.print("Sum - " + sum(a));
 
         System.out.print("Product - " + product(a));
+        System.out.print("ProductOfNonZeroElements - " + productOfNonZeroElements(a));
+        System.out.print("Max - " + max(a));
     }
 
     private static int size(Node root) {
@@ -52,6 +54,12 @@ public class BinaryTreeNode {
         if(root == null) return 1;
         int val = (root.data == 0) ? 1 : root.data;
         return val * product(root.left) * product(root.right);
+    }
+
+    private static int max(Node root) {
+        //base case
+        if(root == null) return Integer.MIN_VALUE;
+        return Math.max(root.data , Math.max(max(root.left), max(root.right)));
     }
 
     private static void print(Node root) {
