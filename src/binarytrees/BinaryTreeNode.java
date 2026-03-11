@@ -23,12 +23,28 @@ public class BinaryTreeNode {
         print(a);
 
         System.out.print("Size - " + size(a));
+
+        System.out.print("Sum - " + sum(a));
+
+        System.out.print("Product - " + product(a));
     }
 
     private static int size(Node root) {
         //base case
         if(root == null) return 0;
         return 1 + size(root.left) + size(root.right);
+    }
+
+    private static int sum(Node root) {
+        //base case
+        if(root == null) return 0;
+        return root.data + sum(root.left) + sum(root.right);
+    }
+
+    private static int product(Node root) {
+        //base case
+        if(root == null) return 1;
+        return root.data * product(root.left) * product(root.right);
     }
 
     private static void print(Node root) {
