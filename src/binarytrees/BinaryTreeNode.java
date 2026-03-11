@@ -21,6 +21,14 @@ public class BinaryTreeNode {
         c.right = f;
 
         print(a);
+
+        System.out.print("Size - " + size(a));
+    }
+
+    private static int size(Node root) {
+        //base case
+        if(root == null) return 0;
+        return 1 + size(root.left) + size(root.right);
     }
 
     private static void print(Node root) {
