@@ -5,7 +5,7 @@ class Node{
     Node(int data) { this.data = data; }
 }
 
-class MyQueue{
+class LLQueue {
     private Node head;
     private Node tail;
     private int size;
@@ -44,7 +44,7 @@ class MyQueue{
 }
 public class LLImplementationOfQueue {
     public static void main(String[] args) {
-        MyQueue q = new MyQueue();
+        LLQueue q = new LLQueue();
         //System.out.println(q.peek()); //Exception
         q.add(10);q.add(20);q.add(30);
         q.display();
