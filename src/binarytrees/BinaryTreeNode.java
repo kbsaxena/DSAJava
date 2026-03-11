@@ -47,6 +47,13 @@ public class BinaryTreeNode {
         return root.data * product(root.left) * product(root.right);
     }
 
+    private static int productOfNonZeroElements(Node root) {
+        //base case
+        if(root == null) return 1;
+        int val = (root.data == 0) ? 1 : root.data;
+        return val * product(root.left) * product(root.right);
+    }
+
     private static void print(Node root) {
         //base case
         if(root == null) return;
