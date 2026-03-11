@@ -2,8 +2,7 @@ package queues;
 
 import java.util.Stack;
 
-//Leetcode 232
-public class MyQueueAddEfficient {
+class MyQueueAddEfficient {
     Stack<Integer> st = new Stack<>();
     Stack<Integer> helper = new Stack<>();
 
@@ -36,4 +35,34 @@ public class MyQueueAddEfficient {
     public boolean empty() {
         return st.size() == 0;
     }
+}
+
+class MyQueuePeekPopEfficient {
+    Stack<Integer> st = new Stack<>();
+    Stack<Integer> helper = new Stack<>();
+
+    public void push(int x) {
+        while (st.size()>0){
+            helper.push(st.pop());
+        }
+        st.push(x);
+        while(helper.size()>0){
+            st.push(helper.pop());
+        }
+    }
+
+    public int pop() {
+        return st.pop();
+    }
+
+    public int peek() {
+        return st.peek();
+    }
+
+    public boolean empty() {
+        return st.size() == 0;
+    }
+}
+
+public class QueueUsingStacks {
 }
