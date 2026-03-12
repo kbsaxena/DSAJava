@@ -2,10 +2,23 @@ package binarytrees;
 
 public class SymmetricTree {
     //Method 1
-    public boolean isSymmetric(Node root) {
+    public boolean isSymmetric1(Node root) {
         // code here
         mirror(root.left);
         return isIdentical(root.left, root.right);
+    }
+
+    //M2
+    public boolean isSymmetric(Node root) {
+        // code here
+        return helper(root.left, root.right);
+    }
+
+    private boolean helper(Node p, Node q) {
+        if(p == null && q == null) return true;
+        if(p == null || q == null) return false;
+        if(p.data != q.data) return false;
+        return helper(p.left, q.right) && helper(p.right, q.left);
     }
 
     //Method 1 - Preserving the tree structure
