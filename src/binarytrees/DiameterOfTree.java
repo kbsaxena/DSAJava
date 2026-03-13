@@ -1,11 +1,12 @@
 package binarytrees;
 
 public class DiameterOfTree {
+    static int maxDia;
     //Method 2
     public int diameter(Node root) {
         // code here
         maxDia = 0;
-        dfs(root);
+        levels(root);
         return maxDia;
     }
 
@@ -21,7 +22,6 @@ public class DiameterOfTree {
     }
 
     //Method 1
-    static int maxDia;
     public int diameter1(Node root) {
         // code here
         maxDia = 0;
