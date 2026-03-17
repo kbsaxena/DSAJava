@@ -13,6 +13,7 @@ class Node {
 }
 
 public class IsBinaryTreeHeap {
+    //TC - O(N) - Triple Pass
     public boolean isHeap(Node root) {
         return isMaxHeap(root) && isCBT(root,1,size(root));
     }
@@ -37,7 +38,7 @@ public class IsBinaryTreeHeap {
     }
 
 
-    //Method 2 Using Queue
+    //Method 2 Using Queue TC - O(N) - Single Pass
     public boolean isHeap2(Node root) {
         Queue<Node> q = new LinkedList<>();
         q.add(root);
