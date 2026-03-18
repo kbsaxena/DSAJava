@@ -1,6 +1,7 @@
 package arrays_and_arraylists;
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class SumOfTwo {
     public static void main(String[] args) {
@@ -10,8 +11,8 @@ public class SumOfTwo {
     }
 
     static boolean twoSum(int arr[], int target) {
-
-        /* TC = O(n^2)
+        //Brute Force - TC = O(n^2)
+        /*
         int n = arr.length;
 
         for(int i=0; i<n; i++){
@@ -19,10 +20,11 @@ public class SumOfTwo {
                 if(arr[i] + arr[j] == target) return true;
             }
         }
+        return false;
+        */
 
-        return false; */
-
-        //TC = O(nlogn)
+        // Sorting - TC = O(nlogn)
+        /*
         Arrays.sort(arr); //O(nlogn)
         int n = arr.length;
         int i = 0, j = n-1;
@@ -33,6 +35,15 @@ public class SumOfTwo {
             else return true;
         }
 
+        return false;
+        */
+
+        //Using HashSet - TC = O(n)
+        HashSet<Integer> hs = new HashSet<>();
+        for(int ele: arr){
+            if(hs.contains(target-ele)) return true;
+            hs.add(ele);
+        }
         return false;
     }
 }
