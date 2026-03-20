@@ -33,7 +33,7 @@ public class NumberOfIslandsIncludingDiagonal {
 
     }
 
-    private void bfs(int i, int j, boolean[][] visited, char[][] grid) {
+    private void bfs1(int i, int j, boolean[][] visited, char[][] grid) {
         Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(i, j));
         visited[i][j] = true;
@@ -91,6 +91,31 @@ public class NumberOfIslandsIncludingDiagonal {
                 visited[x + 1][y + 1] = true;
             }
         }
+    }
 
+    private void bfs(int i, int j, boolean[][] visited, char[][] grid) {
+        Queue<Pair> q = new LinkedList<>();
+        q.add(new Pair(i, j));
+        visited[i][j] = true;
+
+        int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
+        int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+        while (!q.isEmpty()) {
+            Pair front = q.remove();
+            int x = front.i;
+            int y = front.j;
+
+            for (int k = 0; k < 8; k++) {
+                int nx = x + dx[k];
+                int ny = y + dy[k];
+
+                if (nx >= 0 && nx < rows && ny >= 0 && ny < cols &&
+                        grid[nx][ny] == 'L' && !visited[nx][ny]) {
+                    q.add(new Pair(nx, ny));
+                    visited[nx][ny] = true;
+                }
+            }
+        }
     }
 }
