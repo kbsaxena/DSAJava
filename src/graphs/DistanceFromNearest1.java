@@ -30,25 +30,25 @@ public class DistanceFromNearest1 {
             int row = front.row;
             int col = front.col;
 
-            // Left (row, col-1)
+            // left (row, col-1)
             if(col-1>=0 && arr[row][col-1]==0 && ans[row][col-1]==0) {
                 ans[row][col-1] = ans[row][col] + 1;
                 q.add(new Pair(row, col - 1));
             }
 
-            // rotting right (row, col+1)
+            // right (row, col+1)
             if(col+1<cols && arr[row][col+1]==0 && ans[row][col+1]==0) {
                 ans[row][col+1] = ans[row][col]+1;
                 q.add(new Pair(row, col + 1));
             }
 
-            // rotting up (row-1, col)
+            // up (row-1, col)
             if(row-1>=0 && arr[row-1][col]==0 && ans[row-1][col]==0) {
                 ans[row-1][col] = ans[row][col]+1;
                 q.add(new Pair(row - 1, col));
             }
 
-            //rotting down (row+1, col)
+            // down (row+1, col)
             if(row+1<rows && arr[row+1][col]==0 && ans[row+1][col]==0) {
                 ans[row+1][col] = ans[row][col]+1;
                 q.add(new Pair(row + 1, col));
