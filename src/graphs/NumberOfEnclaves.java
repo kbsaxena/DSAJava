@@ -48,25 +48,25 @@ public class NumberOfEnclaves {
             int row = front.row;
             int col = front.col;
 
-            // rotting Left (row, col-1)
+            // left (row, col-1)
             if(col-1>=0 && arr[row][col-1]==1) {
                 arr[row][col-1] = -1;
                 q.add(new Pair(row, col - 1));
             }
 
-            // rotting right (row, col+1)
+            // right (row, col+1)
             if(col+1<cols && arr[row][col+1]==1) {
                 arr[row][col+1] = -1;
                 q.add(new Pair(row, col + 1));
             }
 
-            // rotting up (row-1, col)
+            // up (row-1, col)
             if(row-1>=0 && arr[row-1][col]==1) {
                 arr[row-1][col] = -1;
                 q.add(new Pair(row - 1, col));
             }
 
-            //rotting down (row+1, col)
+            // down (row+1, col)
             if(row+1<rows && arr[row+1][col]==1) {
                 arr[row+1][col] = -1;
                 q.add(new Pair(row + 1, col));
