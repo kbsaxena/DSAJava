@@ -4,73 +4,70 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class RottenOranges {
-    public class Pair{
-        int i;
-        int j;
+    public class Triplet{
+        int row;
+        int col;
         int time;
-        Pair(int i, int j, int time){
-            this.i = i;
-            this.j = j;
+        Triplet(int row, int col, int time){
+            this.row = row;
+            this.col = col;
             this.time = time;
         }
     }
-    public int orangesRot(int[][] mat) {
+    public int orangesRot(int[][] arr) {
         // code here
-        int rows = mat.length;
-        int cols = mat[0].length;
-
-        Queue<Pair> q = new LinkedList<>();
-        int fresh = 0;
+        int rows = arr.length;
+        int cols = arr[0].length;
+        Queue<Triplet> q = new LinkedList<>();
 
         for(int i=0;i<rows;i++){
             for(int j=0;j<cols;j++){
-                if(mat[i][j]==2){
-                    q.add(new Pair(i,j,0));
-                } else if(mat[i][j]==1){
-                    fresh++;
-                }
+                if(arr[i][j]==2) //It is rotten at time = 0
+                    q.add(new Triplet(i,j,0));
             }
         }
 
-        int ans = 0;
-
+        int maxTime = 0;
         while(q.size()>0){
-            Pair front = q.remove();
-            int x = front.i;
-            int y = front.j;
-            int t = front.time;
+            Triplet front = q.remove();
+            int row = front.row;
+            int col = front.col;
+            int time = front.time;
 
-            ans = t;
+            maxTime = Math.max(maxTime, time);
 
-            //Up
-            if(x-1>=0 && mat[x-1][y]==1){
-                mat[x-1][y]=2;
-                q.add(new Pair(x-1,y,t+1));
-                fresh--;
+            // rotting Left (row, col-1)
+            if(col-1>=0 && arr[row][col-1]==1) {
+                arr[row][col-1] = 2;
+                q.add(new Triplet(row, col - 1, time + 1));
             }
 
-            //Down
-            if(x+1<rows && mat[x+1][y]==1){
-                mat[x+1][y]=2;
-                q.add(new Pair(x+1,y,t+1));
-                fresh--;
+            // rotting right (row, col+1)
+            if(col+1<cols && arr[row][col+1]==1) {
+                arr[row][col+1] = 2;
+                q.add(new Triplet(row, col + 1, time + 1));
             }
 
-            //Left
-            if(y-1>=0 && mat[x][y-1]==1){
-                mat[x][y-1]=2;
-                q.add(new Pair(x,y-1,t+1));
-                fresh--;
+            // rotting up (row-1, col)
+            if(row-1>=0 && arr[row-1][col]==1) {
+                arr[row-1][col] = 2;
+                q.add(new Triplet(row - 1, col, time + 1));
             }
 
-            //Right
-            if(y+1<cols && mat[x][y+1]==1){
-                mat[x][y+1]=2;
-                q.add(new Pair(x,y+1,t+1));
-                fresh--;
+            //rotting down (row+1, col)
+            if(row+1<rows && arr[row+1][col]==1) {
+                arr[row+1][col] = 2;
+                q.add(new Triplet(row + 1, col, time + 1));
+            }
+
+        }
+
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<cols;j++){
+                if(arr[i][j]==1) return -1;
             }
         }
 
-        return fresh==0 ? ans : -1;
+        return maxTime;
     }
 }
