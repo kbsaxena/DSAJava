@@ -53,7 +53,6 @@ public class DistanceFromNearest1 {
                 ans[row+1][col] = ans[row][col]+1;
                 q.add(new Pair(row + 1, col));
             }
-
         }
 
         ArrayList<ArrayList<Integer>> finalAns = new ArrayList<>();
