@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CourseSchedule1 {
-    public boolean canFinish(int n, int[][] prerequisites) {
+public class CourseSchedule2 {
+    public ArrayList<Integer> findOrder(int n, int[][] prerequisites) {
         ArrayList<ArrayList<Integer>> adjList = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             adjList.add(new ArrayList<>());
@@ -33,6 +33,10 @@ public class CourseSchedule1 {
                 if(in_degree[ele] == 0) q.add(ele);
             }
         }
-        return (n==ans.size());
+
+        // if cycle detected return empty array
+        if(ans.size() != n) return new ArrayList<>();
+
+        return ans;
     }
 }
