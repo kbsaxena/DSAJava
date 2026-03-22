@@ -13,12 +13,11 @@ public class CourseSchedule1 {
 
         int[] in_degree = new int[n];
         for(int i = 0; i < prerequisites.length; i++) {
-            int u = prerequisites[i][0];
-            int v = prerequisites[i][1];
-            adjList.get(u).add(v);
-            //adjList.get(v).add(u); // It is directed graph so no reverse link
+            int u = prerequisites[i][0]; // course
+            int v = prerequisites[i][1]; // prerequisite
+            adjList.get(v).add(u);
 
-            in_degree[v]++;
+            in_degree[u]++;
         }
 
         Queue<Integer> q = new LinkedList<>();
