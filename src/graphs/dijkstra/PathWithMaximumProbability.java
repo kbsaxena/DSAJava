@@ -1,7 +1,6 @@
-package graphs;
+package graphs.dijkstra;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.PriorityQueue;
 

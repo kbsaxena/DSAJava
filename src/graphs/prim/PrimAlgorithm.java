@@ -1,4 +1,4 @@
-package graphs;
+package graphs.prim;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
