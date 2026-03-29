@@ -4,9 +4,12 @@ import java.util.Arrays;
 
 class DSU{
     int[] parent;
+    int[] size;
     DSU(int vertices){
         parent = new int[vertices];
         for(int i=0;i<vertices;i++) make(i);
+        size = new int[vertices];
+        Arrays.fill(size, 1);
     }
 
     void make(int n){
@@ -18,8 +21,22 @@ class DSU{
         return findGroupLeader(parent[n]);
     }
 
-    void union(int a, int b){
+    //Normal Union
+    /*void union(int a, int b){
         parent[findGroupLeader(b)] = findGroupLeader(a);
+    }*/
+
+    //union by size
+    void union(int a, int b){
+        a = findGroupLeader(a);
+        b = findGroupLeader(b);
+        if(size[a]>size[b]){
+            parent[b] = a; //Updating b's parent as a
+            size[a] += size[b]; //Increasing leader size
+        } else{
+            parent[a] = b;
+            size[b] += size[a];
+        }
     }
 }
 
