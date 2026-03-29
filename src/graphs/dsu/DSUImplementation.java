@@ -1,4 +1,4 @@
-package graphs;
+package graphs.dsu;
 
 import java.util.Arrays;
 
