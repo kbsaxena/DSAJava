@@ -6,6 +6,7 @@ import java.util.Queue;
 
 public class CycleInUndirectedGraph {
     //Method 2 - Using DSU
+    //Overall TC = O(E × α(V)) ≈ O(E) and SC = O(V)
     public boolean isCycle(int n, int[][] edges){
         DSU dsu = new DSU(n);
         for(int[] edge: edges){
