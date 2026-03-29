@@ -18,7 +18,9 @@ class DSU{
 
     int findGroupLeader(int n){
         if(parent[n] == n) return n;
-        return findGroupLeader(parent[n]);
+        int leader = findGroupLeader(parent[n]);
+        parent[n] = leader; //Path Compression
+        return leader;
     }
 
     //Normal Union
