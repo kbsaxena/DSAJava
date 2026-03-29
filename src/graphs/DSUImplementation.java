@@ -21,6 +21,8 @@ class DSU{
         int leader = findGroupLeader(parent[n]);
         parent[n] = leader; //Path Compression
         return leader;
+        //Below is also valid, first it assigns value to parent[n] then returns
+        //return parent[n] = findGroupLeader(parent[n]);
     }
 
     //Normal Union
