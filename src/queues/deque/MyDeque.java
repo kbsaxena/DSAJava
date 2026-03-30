@@ -64,6 +64,19 @@ class MyDeque {
         }
     }
 
+    //Without extra space
+    public void reverse(Deque<Integer> dq) {
+        int size = dq.size();
+
+        for (int i = 0; i < size / 2; i++) {
+            int front = dq.removeFirst();
+            int back = dq.removeLast();
+
+            dq.addFirst(back);
+            dq.addLast(front);
+        }
+    }
+
     // Utility to print
     public void print() {
         System.out.println(dq);
