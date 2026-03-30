@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class KSizedSubArrayMaximum {
-    //Method 2 Brute Force
+    //Method 2 Using NGE(Next Greater Element)
     public ArrayList<Integer> maxOfSubarrays2(int[] arr, int k) {
         int n = arr.length;
         int[] nge = new int[n];
