@@ -1,9 +1,32 @@
 package queues.deque;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class KSizedSubArrayMaximum {
+    //Method 3 Using Deque
+    public ArrayList<Integer> maxOfSubarrays(int[] arr, int k) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        Deque<Integer> dq = new LinkedList<>();
+        for(int i=0;i<arr.length;i++){
+            //Remove from first Out of window indexes
+            while(dq.size()>0 && dq.getFirst() <= i-k)
+                dq.removeFirst();
+
+            //Remove smallest element indexes
+            while(dq.size()>0 && arr[dq.getLast()] <= arr[i])
+                dq.removeLast();
+
+            dq.addLast(i);
+
+            //Need to mark answer at end of window
+            if(i >= k-1) ans.add(arr[dq.getFirst()]);
+        }
+        return ans;
+    }
+
     //Method 2 Using NGE(Next Greater Element)
     public ArrayList<Integer> maxOfSubarrays2(int[] arr, int k) {
         int n = arr.length;
