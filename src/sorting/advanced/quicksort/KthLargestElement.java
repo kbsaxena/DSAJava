@@ -13,10 +13,8 @@ public class KthLargestElement {
             int pivotIndex = partition(arr, lo, hi);
 
             if (pivotIndex + 1 == k) return arr[pivotIndex];
-            else if (pivotIndex + 1 < k)
-                return quickSelect(arr, pivotIndex + 1, hi, k);
-            else
-                return quickSelect(arr, lo, pivotIndex - 1, k);
+            else if (pivotIndex + 1 < k) return quickSelect(arr, pivotIndex + 1, hi, k);
+            else return quickSelect(arr, lo, pivotIndex - 1, k);
         }
         return -1; // edge case
     }
@@ -30,13 +28,11 @@ public class KthLargestElement {
 
         int pivot = arr[lo];
         int i = lo + 1, j = hi;
-
         while (i <= j) {
             if (arr[i] <= pivot) i++;
             else if (arr[j] > pivot) j--;
             else swap(arr, i, j);
         }
-
         // place pivot correctly
         swap(arr, lo, j);
         return j;
