@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class KthSmallestElement {
-    //Method 5 Using Quick Sort
+    //Method 5 Using Quick Select (QuickSort)
     //TC = O(n)
     public static int kthSmallest(int[] arr, int k) {
         return quickSort(arr,0, arr.length-1, k);
@@ -18,10 +18,6 @@ public class KthSmallestElement {
     }
 
     private static int partition(int[] arr, int lo, int hi) {
-        /* Choosing last element as pivot
-        int pivot = arr[hi];
-        int i=lo, j=hi-1;
-        */
         int pivot = arr[lo];
         int i = lo+1, j = hi;
         while(i<=j){
@@ -33,11 +29,6 @@ public class KthSmallestElement {
                 arr[j] = temp;
             }
         }
-        //swap last(hi) with i
-        /*int temp = arr[i];
-        arr[i] = arr[hi];
-        arr[hi] = temp;
-        */
         //swap first(lo) with j
         int temp = arr[j];
         arr[j] = arr[lo];
