@@ -1,4 +1,4 @@
-package sorting.advanced;
+package sorting.advanced.quicksort;
 
 public class QuickSort {
     public void quickSort(int[] arr, int lo, int hi) {
