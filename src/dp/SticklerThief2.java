@@ -33,9 +33,7 @@ public class SticklerThief2 {
     public int maxValue1(int arr[]) {
         int n = arr.length;
         if(n==1) return arr[0];
-        int case1 = loot(arr, 0, n-2);
-        int case2 = loot(arr, 1, n-1);
-        return Math.max(case1, case2);
+        return Math.max(loot(arr, 0, n-2), loot(arr, 1, n-1));
     }
 
     private int loot(int[] arr, int i, int end){
