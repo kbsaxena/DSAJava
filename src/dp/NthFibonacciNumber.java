@@ -3,8 +3,19 @@ package dp;
 import java.util.Arrays;
 
 public class NthFibonacciNumber {
-    //Method 2 - Using DP
+    //Method 3 - Using Tabulation
     public int nthFibonacci(int n) {
+        int[] dp = new int[n + 1]; //0 to n index
+        dp[0] = 0;
+        if(n>=1) dp[1] = 1;
+        for(int i=2;i<=n;i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+        return dp[n];
+    }
+
+    //Method 2 - Using DP
+    public int nthFibonacci2(int n) {
         int[] dp = new int[n+1]; //0 to n index
         Arrays.fill(dp, -1); //-1 mean unvisited
         return fibo(n, dp);
