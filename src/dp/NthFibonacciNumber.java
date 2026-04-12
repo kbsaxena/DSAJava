@@ -3,8 +3,22 @@ package dp;
 import java.util.Arrays;
 
 public class NthFibonacciNumber {
+    //Method 4 - Using Tabulation (Space Optimized)
+    public int nthFibonacci4(int n) {
+        if(n <= 1) return n;
+        int[] dp = new int[3];
+        dp[0] = 0;
+        dp[1] = 1;
+        for(int i=2;i<=n;i++){
+            dp[2] = dp[1] + dp[0];
+            dp[0] = dp[1];
+            dp[1] = dp[2];
+        }
+        return dp[2];
+    }
+
     //Method 3 - Using Tabulation
-    public int nthFibonacci(int n) {
+    public int nthFibonacci3(int n) {
         int[] dp = new int[n + 1]; //0 to n index
         dp[0] = 0;
         if(n>=1) dp[1] = 1;
