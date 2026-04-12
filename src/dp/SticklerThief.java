@@ -3,8 +3,24 @@ package dp;
 import java.util.Arrays;
 
 public class SticklerThief {
-    //Method 3 Using Tabulation
+    //Method 4 Using Tabulation(Space Optimized)
     public int findMaxSum(int arr[]) {
+        int n = arr.length;
+        int[] dp = new int[3];
+        dp[0] = arr[0];
+        if(n>1) dp[1] = Math.max(arr[0], arr[1]);
+        if(n <= 2) return dp[n-1];
+        for(int i = 2;i<n;i++){
+            int pick = arr[i] + dp[0];
+            int skip = dp[1];
+            dp[2] = Math.max(pick, skip);
+        }
+
+        return dp[2];
+    }
+
+    //Method 3 Using Tabulation
+    public int findMaxSum3(int arr[]) {
         int n = arr.length;
         int[] dp = new int[n]; //i - 0 to n-1
         dp[0] = arr[0];
