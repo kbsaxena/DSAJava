@@ -3,8 +3,22 @@ package dp;
 import java.util.Arrays;
 
 public class MinimumCostClimbingStairs {
-    //Method 3 Using DP(Tabulation)
+    //Method 4 Using DP(Tabulation Space Optimized)
     static int minCostClimbingStairs(int[] cost) {
+        int n = cost.length;
+        int[] dp = new int[3];
+        dp[0] = cost[0];
+        dp[1] = cost[1];
+        for(int i = 2;i<n;i++){
+            dp[2] = cost[i] + Math.min(dp[1], dp[0]);
+            dp[0] = dp[1];
+            dp[1] = dp[2];
+        }
+        return Math.min(dp[1], dp[0]);
+    }
+
+    //Method 3 Using DP(Tabulation)
+    static int minCostClimbingStairs3(int[] cost) {
         int n = cost.length;
         int[] dp = new int[n];
         dp[0] = cost[0];

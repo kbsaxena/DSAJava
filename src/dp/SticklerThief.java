@@ -14,6 +14,8 @@ public class SticklerThief {
             int pick = arr[i] + dp[0];
             int skip = dp[1];
             dp[2] = Math.max(pick, skip);
+            dp[0] = dp[1];
+            dp[1] = dp[2];
         }
 
         return dp[2];
