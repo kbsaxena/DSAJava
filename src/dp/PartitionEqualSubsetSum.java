@@ -3,6 +3,30 @@ package dp;
 import java.util.Arrays;
 
 public class PartitionEqualSubsetSum {
+    // Method 3 Andhadhoon Dp Tabulation
+    static boolean equalPartitionAT(int arr[]) {
+        int arraySum = 0;
+        for (int ele : arr) arraySum += ele;
+        if (arraySum % 2 == 1) return false;
+        int n = arr.length;
+        int target = arraySum / 2;
+        Boolean[][] dp = new Boolean[n][target+1];
+        for(int i=0;i<=n-1;i++){
+            for(int j=0;j<=target;j++){
+                if(j - arr[i] >= 0){
+                    //if(i == arr.length) return (target == 0); here j is replacing target
+                    boolean pick = ((i-1>=0)?dp[i-1][j-arr[i]]:(j==0));
+                    boolean skip = ((i-1>=0)?dp[i-1][j]:(j==0));
+                    dp[i][j] = pick || skip;
+                } else {
+                    boolean skip = ((i-1>=0)?dp[i-1][j]:(j==0));
+                    dp[i][j] = skip;
+                }
+            }
+        }
+        return dp[n-1][target];
+    }
+
     // Method 3 Dp Tabulation
     static boolean equalPartition(int arr[]) {
         int arraySum = 0;
