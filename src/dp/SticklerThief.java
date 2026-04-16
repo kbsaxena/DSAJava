@@ -21,6 +21,18 @@ public class SticklerThief {
         return dp[2];
     }
 
+    //Method 3 Using Andhadhoon Tabulation
+    public int findMaxSumAT(int arr[]) {
+        int n = arr.length;
+        int[] dp = new int[n]; //i : 0 to n-1
+        for(int i=0;i<=n-1;i++){
+            int pick = arr[i] + ((i-2>=0)?dp[i-2]:0);
+            int skip = ((i-1>=0)? dp[i-1] :0);
+            dp[i] = Math.max(pick, skip);
+        }
+        return dp[n-1];
+    }
+
     //Method 3 Using Tabulation
     public int findMaxSum3(int arr[]) {
         int n = arr.length;

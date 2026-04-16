@@ -3,6 +3,30 @@ package dp;
 import java.util.Arrays;
 
 public class Knapsack01 {
+    //Method 4 Using Andhadhoon Dp Tabulation Space Optimized
+    public int knapsackSO(int C, int val[], int wt[]) {
+        int n = val.length;
+        int[][] dp = new int[2][C + 1];
+        for (int i = 0; i <= n-1; i++) {
+            for (int j = 0; j <= C; j++) {
+                if (j - wt[i] >= 0) {
+                    int pick = val[i] + ((i - 1) >= 0 ? dp[0][j - wt[i]] : 0);
+                    int skip = ((i - 1) >= 0 ? dp[0][j] : 0);
+                    dp[1][j] = Math.max(pick, skip);
+                } else {
+                    int skip = ((i - 1) >= 0 ? dp[0][j] : 0);
+                    dp[1][j] = skip;
+                }
+            }
+            //Copy 1st row to 0th row
+            for(int j=0;j<= C ;j++){
+                dp[0][j] = dp[1][j];
+            }
+
+        }
+        return dp[1][C];
+    }
+
     //Method 3 Using Andhadhoon Dp Tabulation
     public int knapsackAT(int C, int val[], int wt[]) {
         int n = val.length;
@@ -22,7 +46,6 @@ public class Knapsack01 {
         }
         return dp[n-1][C];
     }
-
 
     //Method 3 Using Dp Tabulation
     public int knapsack(int C, int val[], int wt[]) {
