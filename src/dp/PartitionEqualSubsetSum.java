@@ -3,8 +3,36 @@ package dp;
 import java.util.Arrays;
 
 public class PartitionEqualSubsetSum {
-    //Method2 Using DP Memoization
+    // Method 3 Dp Tabulation
     static boolean equalPartition(int arr[]) {
+        int arraySum = 0;
+        for (int ele : arr) arraySum += ele;
+        if (arraySum % 2 == 1) return false;
+        int n = arr.length;
+        int target = arraySum / 2;
+        boolean[][] dp = new boolean[n+1][target + 1]; //Use boolean because you don’t need a third state (null) in tabulation.
+
+        //handling base case if(i == arr.length) return (target == 0);
+        dp[n][0] = true;
+
+        //Same as recursion: i from 0→n-1 becomes n-1→0
+        for (int i = n - 1; i >= 0; i--) {
+            for (int t = 0; t <= target; t++) {
+                if (t - arr[i] >= 0) {
+                    boolean pick = dp[i + 1][t - arr[i]];
+                    boolean skip = dp[i + 1][t];
+                    dp[i][t] = pick || skip;
+                } else {
+                    boolean skip = dp[i + 1][t];
+                    dp[i][t] = skip;
+                }
+            }
+        }
+        return dp[0][target];
+    }
+
+    //Method2 Using DP Memoization
+    static boolean equalPartition2(int arr[]) {
         int arraySum = 0;
         for(int ele: arr) arraySum += ele;
         if(arraySum % 2 == 1) return false;

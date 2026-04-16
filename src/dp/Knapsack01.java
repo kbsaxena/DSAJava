@@ -7,6 +7,7 @@ public class Knapsack01 {
     public int knapsack(int C, int val[], int wt[]) {
         int n = val.length;
         int[][] dp = new int[n + 1][C + 1];
+        //Base case is dp[n][cap] = 0, which is already satisfied by default initialization of int array.
         for (int i = n - 1; i >= 0; i--) {
             for (int cap = 0; cap <= C; cap++) {
                 if (cap - wt[i] >= 0) {
