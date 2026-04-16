@@ -3,6 +3,28 @@ package dp;
 import java.util.Arrays;
 
 public class CoinChange_MinimumCoins {
+    //Method 3 Andhadhoon Dp Tabulation
+    public int minCoinsAT(int coins[], int sum) {
+        int n = coins.length;
+        long[][] dp = new long[n][sum+1];
+        for (int i = 0; i <=n-1; i++) {
+            for (int j=0;j<=sum;j++) {
+                /* if(sum == 0) return 0; else return Integer.MAX_VALUE; */
+                int basecase = (j == 0)?0:Integer.MAX_VALUE;
+                if(j-coins[i]>=0){
+                    long pick = 1 + dp[i][j-coins[i]];
+                    long skip = ((i-1>=0)?dp[i-1][j]:basecase);
+                    dp[i][j] = Math.min(pick, skip);
+                } else{
+                    long skip = ((i-1>=0)?dp[i-1][j]:basecase);
+                    dp[i][j] = skip;
+                }
+            }
+        }
+        long ans = dp[n-1][sum];
+        return (ans >= Integer.MAX_VALUE) ? -1: (int)ans;
+    }
+
     //Method 3 Dp Tabulation
     public int minCoins(int coins[], int sum) {
         int n = coins.length;
